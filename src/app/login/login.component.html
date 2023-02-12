@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h3>Bank service Application</h3>
+    </header>
+    <main>
+         <div class="main_login"> 
+            <input type="text" class="accno" placeholder ="account no:" id="accno" name="psw"(change)="accnumber($event)">
+            <input type="text" class="psw" placeholder="password:" id="psw" name="psw"   (change)="passwords($event)">
+            <button class="btn" id="log_btn" (click)="login()">Log In</button>
+         </div>
+    </main>
+       
+   
+</body>
+</html>
