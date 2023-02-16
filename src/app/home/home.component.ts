@@ -17,8 +17,10 @@ export class HomeComponent {
    accnoDebit:any
    passDebit:any
    amountDabit:any
+   userName=""
 
   constructor( private data:DataService,private route:Router){
+    this.userName = this.data.userName
 
   }
   credit(){

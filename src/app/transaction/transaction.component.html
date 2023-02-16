@@ -10,8 +10,38 @@
   <header>
     <div class="main_heading">
         <h2>Transation Details</h2>
-        </div>
+    </div>
 </header>
+<main>
+  <div class="sub_heading"><span>Transation history</span></div>
+  <div class="main_content">
+    <div class="accname">
+      <span>Account holder :{{nameAcc}}</span>
+      <span>Account Number :{{userAcc}}</span>
+    </div>
+    <div class="transation_data">
+      <div class="sub_transation">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let i of transationData">
+            <tr>
+              <td>{{i.type}}</td>
+              <td>{{i.amount}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      
+    </div>
+    
+  </div>
+</main>
   
 </body>
 </html>

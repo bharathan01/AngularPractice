@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-transaction',
@@ -7,7 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent {
-  constructor(private router:Router){
+   transationData:any
+   userAcc:any
+   nameAcc:any
+  constructor(private router:Router,private transaction:DataService){
+   this.userAcc= this.transaction.userAcc
+   this.nameAcc = this.transaction.userName
+
+
+    this.transationData =this.transaction.getTranstion(this.userAcc)
     
   }
 

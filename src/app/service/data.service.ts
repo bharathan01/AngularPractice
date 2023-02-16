@@ -5,13 +5,15 @@ import { UrlSegment } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
+  userName=""
+  userAcc:any
 
   constructor() { }
   userDetails: any = {
-    1000: { accno: 1000, uname: "arun", password: "1234", balance: 0 },
-    1001: { accno: 1001, uname: "anu", password: "1234", balance: 0 },
-    1002: { accno: 1002, uname: "raju", password: "1234", balance: 0 },
-    1003: { accno: 1003, uname: "ram", password: "1234", balance: 0 }
+    1000: { accno: 1000, uname: "arun", password: "1234", balance: 0 ,transations:[]},
+    1001: { accno: 1001, uname: "anu", password: "1234", balance: 0  ,transations:[]},
+    1002: { accno: 1002, uname: "raju", password: "1234", balance: 0 ,transations:[] },
+    1003: { accno: 1003, uname: "ram", password: "1234", balance: 0  ,transations:[]}
   }
   register(accname: any, accno: any, pass: any) {
     let userDetails = this.userDetails
@@ -31,6 +33,8 @@ export class DataService {
     let userDetails = this.userDetails
     if (accno in userDetails) {
       if (pass == userDetails[accno]["password"]) {
+        this.userName = userDetails[accno]["uname"]
+        this.userAcc = accno
         return true
 
       }
@@ -52,6 +56,8 @@ export class DataService {
     if (accnoCredit in userDetails) {
       if (passCredit == userDetails[accnoCredit]["password"]) {
         userDetails[accnoCredit]["balance"] += creditAmt
+        //transation details
+        userDetails[accnoCredit]["transations"].push({type:"CREDIT",amount:creditAmt})
         return userDetails[accnoCredit]["balance"]
 
       }
@@ -77,6 +83,7 @@ export class DataService {
       if (passDebit == userDetails[accnoDebit]["password"]) {
         if(debitAmt <= userDetails[accnoDebit]["balance"]){
           userDetails[accnoDebit]["balance"] -= debitAmt
+          userDetails[accnoDebit]["transations"].push({type:"DEBIT",amount:debitAmt})
           return userDetails[accnoDebit]["balance"]
         }
         else{
@@ -97,8 +104,12 @@ export class DataService {
       alert('Account number is incorrect')
       return false
     }
+    
 
 
+  }
+  getTranstion(accountNo:any){
+    return this.userDetails[accountNo]["transations"]
   }
 
 
