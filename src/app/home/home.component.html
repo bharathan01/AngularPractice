@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="main_heading">
+            <h2>Bank Services</h2>
+            </div>
+    </header>
+    <main>
+        <div class="transation">
+            <div class="form">
+                <div class="c">
+                    <div id="carouselExampleIndicators" class="carousel slide main_manu">
+                        <div class="carousel-indicators menu">
+                          <div class="credit box_hover">
+                            <h6 class=" box_hover">Creadit</h6>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active credit_btn" aria-current="true" aria-label="Slide 1"></button>
+                          </div>
+                          <div class="debit  box_hover">
+                            <h6 class=" box_hover">Debit</h6>
+                            
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="debit_btn"></button>
+                          </div>
+                        </div>
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <input type="text" class="accno" placeholder ="Ac.Number :" id="accno" name="accName"  [(ngModel)]="accnoCredit">
+                            <input type="text" class="accno" placeholder ="password :" id="accno" name="accno"  [(ngModel)]="passCredit">
+                            <input type="text" class="accno" placeholder="Amount :" id="psw" name="psw" [(ngModel)]="amountCredit">
+                            <button class="accno" id="credit" (click)="credit()">Credit</button>
+                          </div>
+                          <div class="carousel-item">
+                            <input type="text" class="accno" placeholder ="Ac.Number:" id="accName" name="accName"  [(ngModel)]="accnoDebit">
+                            <input type="text" class="accno" placeholder ="password:" id="accno" name="accno" [(ngModel)]="passDebit">
+                            <input type="text" class="accno" placeholder="Amount:" id="psw" name="psw"  [(ngModel)]="amountDabit">
+                            <button class="accno" id="debit" (click)="debit()" >Debit</button>
+                          </div>
+                          
+                        </div>
+                      </div>
+        
+                </div>
+            </div>
+            <div class="transatios">
+              <span>Click here to your transaction details!   <a href="" routerLink='/transation'>transations</a></span>
+            </div>
+        </div>
+       
+    </main>
+    
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h3>Bank service Application</h3>
+    </header>
+    <main>
+         <div class="main_login"> 
+            <h2>Sign Up</h2>
+            <input type="text" class="accno" placeholder ="Name :" id="accName" name="accName" [(ngModel)]="uname">
+            <input type="text" class="accno" placeholder ="account no:" id="accno" name="accno" [(ngModel)]="accno">
+            <input type="text" class="psw" placeholder="password:" id="psw" name="psw"[(ngModel)]="pass" >
+            <button class="btn" id="log_btn" (click)="register()">Register</button>
+            <a href="" routerLink="">log In</a>
+            
+          
+         </div>
+    </main>
+       
+   
+</body>
+</html>

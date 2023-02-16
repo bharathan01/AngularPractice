@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-login',
@@ -7,42 +9,86 @@ import { Component} from '@angular/core';
 })
 export class LoginComponent {
 
-  data = ""
-  password =""
-
-  userDetails:any = {
-    1000:{acno:1000,uname:"arun",password:"1234",balance:1000},
-    1001:{acno:1001,uname:"anu",password:"1234",balance:1000},
-    1002:{acno:1002,uname:"raju",password:"1234",balance:1000},
-    1003:{acno:1003,uname:"ram",password:"1234",balance:1000}
+  constructor(private router:Router, private uDatas:DataService){
+     
   }
+  
 
-  accnumber(event:any){
-    this.data = event.target.value
-  }
-  passwords(pass:any){
-    this.password = pass.target.value
+// event Binding Using Event Methode
+//----------------------------------
+  // data = ""
+  // password =""
+
+  
+  // accnumber(event:any){
+  //   this.data = event.target.value
+  // }
+  // passwords(pass:any){
+  //   this.password = pass.target.value
     
-  }
+  // }
+  // login(){
+  //   var accnum = this.data
+  //   var pass = this.password
+  //   var userDetails = this.userDetails
+
+  //   if(accnum in userDetails){
+  //     if(pass == userDetails[accnum]["password"]){
+  //       alert("log in succesful")
+
+  //     }
+  //     else{
+  //       alert("password is incurrect")
+  //     }
+
+  //   }
+  //   else{
+  //     alert("invalid user")
+  //   }
+    
+  // }
+  //-------------------------------------------
+  // <!-- event binding Using template rendering variable methode -->
+  // login(accno:any , passwrd:any){
+  //   var accnum = accno.value
+  //   var pass = passwrd.value
+  //   var userDetails = this.userDetails
+
+  //   if(accnum in userDetails){
+  //     if(pass == userDetails[accnum]["password"]){
+  //       alert("log in succesful")
+
+  //     }
+  //     else{
+  //       alert("password is incurrect")
+  //     }
+
+  //   }
+  //   else{
+  //     alert("invalid user")
+  //   }
+    
+  // }
+  // ------------------------------------------------------------------------
+  // <!-- #two way binding  -->
+  // <!-- 1.methode ngmodel -->
+  // <!-- ----------------------------------------------------------------------------------------- -->
+  data = ""
+  pass = ""
   login(){
+
     var accnum = this.data
-    var pass = this.password
-    var userDetails = this.userDetails
+    var pass = this.pass
 
-    if(accnum in userDetails){
-      if(pass == userDetails[accnum]["password"]){
-        alert("log in succesful")
-
-      }
-      else{
-        alert("password is incurrect")
-      }
-
+    let result = this.uDatas.login(accnum,pass)
+    if(result){
+      alert('log in successful')
+      this.router.navigateByUrl('home')
     }
     else{
-      alert("invalid user")
+      alert('Incorrect account number or password')
     }
     
   }
-
+  // -----------------------------------------------------------------
 }
