@@ -12,9 +12,19 @@
     <header>
         <div class="main_heading">
             <h2>Bank Services</h2>
-            </div>
+        </div>
+        <div class="buttons">
+          <button class="log_out" (click)="logOut()">Log Out</button>
+          <button class="delete">Delete</button>
+        </div>
+
     </header>
     <main>
+      <div class="delete_page">
+        <app-deletepage></app-deletepage>
+
+      </div>
+      
       
         <div class="transation">
           <div class="username"><span>Welcome {{userName}} </span></div>

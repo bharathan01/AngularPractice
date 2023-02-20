@@ -11,33 +11,42 @@
         <h3>Bank service Application</h3>
     </header>
     <main>
-         <div class="main_login"> 
-            <h2>Log In</h2>
-            <!-- event Binding Using Event Methode -->
-            <!-- ---------------------------------------------- -->
-            <!-- <input type="text" class="accno" placeholder ="account no:" id="accno" name="psw"(change)="accnumber($event)">
-            <input type="text" class="psw" placeholder="password:" id="psw" name="psw"   (change)="passwords($event)"> -->
-            <!-- --------------------------------------------------------- -->
-            <!-- event binding Using template rendering variable methode -->
-            <!-- ------------------------------------------------------------------->
-            <!-- <input type="text" class="accno" placeholder ="account no:" id="accno" name="psw" #accno>
-            <input type="text" class="psw" placeholder="password:" id="psw" name="psw" #password >
-            <button class="btn" id="log_btn" (click)="login(accno , password)">Log In</button> -->
-            <!-- ------------------------------------------------------------------------------- -->
-            <!-- #two way binding  -->
-              <!-- 1.methode ngmodel -->
-              <!-- ----------------------------------------------------------------------------------------- -->
-            <input type="text" class="accno" placeholder ="account no:" id="accno" name="psw" [(ngModel)]="data">
-            <input type="text" class="psw" placeholder="password:" id="psw" name="psw" [(ngModel)]="pass" >
-            <button class="btn" id="log_btn" (click)="login()">Log In</button>
-            <a href="" routerLink="register">Sign Up</a>
-            
-            <!-- --------------------------------------------------------------------------------------- -->
-         </div>
-    </main>
-       
+        <div class="sub_main">
+            <div class="main_login"> 
+                <h2>Log In</h2>
+                <!-- event Binding Using Event Methode -->
+                <!-- ---------------------------------------------- -->
+                <!-- <input type="text" class="accno" placeholder ="account no:" id="accno" name="psw"(change)="accnumber($event)">
+                <input type="text" class="psw" placeholder="password:" id="psw" name="psw"   (change)="passwords($event)"> -->
+                <!-- --------------------------------------------------------- -->
+                <!-- event binding Using template rendering variable methode -->
+                <!-- ------------------------------------------------------------------->
+                <!-- <input type="text" class="accno" placeholder ="account no:" id="accno" name="psw" #accno>
+                <input type="text" class="psw" placeholder="password:" id="psw" name="psw" #password >
+                <button class="btn" id="log_btn" (click)="login(accno , password)">Log In</button> -->
+                <!-- ------------------------------------------------------------------------------- -->
+                <!-- #two way binding  -->
+                  <!-- 1.methode ngmodel -->
+                  <!-- ----------------------------------------------------------------------------------------- -->
+                <form class="form"action="" [formGroup]="loginForm" (ngSubmit)="login()">  
+                    <input type="text" class="accno" placeholder ="account no:" id="accno" name="psw" formControlName="accno">
+                    <!-- to display the input is correct or not --> 
+                    <!-- <div *ngIf="this.loginForm.get('accno')?.errors && this.loginForm.get('accno')?.touched">
+                        <p >Invalid input </p>
 
-   
+                    </div> -->
+                    
+                    <input type="text" class="psw" placeholder="password:" id="psw" name="psw" formControlName="pass" >
+                    <button class="btn" id="log_btn" (click)="login()">Log In</button>
+                </form>
+                <a href="" routerLink="register">Sign Up</a>
+                
+                <!-- --------------------------------------------------------------------------------------- -->
+             </div>
+
+        </div>
+         
+    </main>
 </body>
 </html>
  

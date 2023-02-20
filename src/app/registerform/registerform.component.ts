@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../service/data.service';
 import { Route, Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-registerform',
@@ -9,7 +10,8 @@ import { Route, Router } from '@angular/router';
 })
 export class RegisterformComponent {
   
-  constructor (private udata:DataService ,private router:Router){
+  constructor (private udata:DataService ,private router:Router,private fb:FormBuilder){
+    
 }
  uname:any
  pass:any
@@ -22,7 +24,7 @@ register(){
     var result = this.udata.register(uname,accno,pass)
     if(result){
       alert("register successful")
-      this.router.navigateByUrl('')
+      this.router.navigateByUrl("")
     }
     else{
       alert("Account allredy present!")

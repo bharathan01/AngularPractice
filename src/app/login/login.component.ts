@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../service/data.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,14 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  loginForm:any
 
-  constructor(private router:Router, private uDatas:DataService){
-     
+  constructor(private router:Router, private uDatas:DataService ,private fb:FormBuilder){
+    this.loginForm = this.fb.group({
+      accno:['',[Validators.required,Validators.pattern('[0-9]+')]],
+      pass:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]+')]]
+
+    })
   }
   
 
@@ -73,14 +79,13 @@ export class LoginComponent {
   // <!-- #two way binding  -->
   // <!-- 1.methode ngmodel -->
   // <!-- ----------------------------------------------------------------------------------------- -->
-  data = ""
-  pass = ""
+  
   login(){
 
-    var accnum = this.data
-    var pass = this.pass
-
-    let result = this.uDatas.login(accnum,pass)
+    var accnum = this.loginForm.value.accno
+    var pass = this.loginForm.value.pass
+    if(this.loginForm.valid){
+      let result = this.uDatas.login(accnum,pass)
     if(result){
       alert('log in successful')
       this.router.navigateByUrl('home')
@@ -90,5 +95,13 @@ export class LoginComponent {
     }
     
   }
+  else{
+    alert('Please check the form inputs')
+
+  }
+
+  }
+
+    
   // -----------------------------------------------------------------
 }

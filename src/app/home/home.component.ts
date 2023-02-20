@@ -17,10 +17,16 @@ export class HomeComponent {
    accnoDebit:any
    passDebit:any
    amountDabit:any
-   userName=""
+   userName:any
 
   constructor( private data:DataService,private route:Router){
     this.userName = this.data.userName
+
+  }
+  ngOnInit():void{
+    if(!localStorage.getItem("userAcc")){
+      this.route.navigateByUrl("")
+    }
 
   }
   credit(){
@@ -50,6 +56,11 @@ export class HomeComponent {
 
 
 
+  }
+  logOut(){
+    localStorage.removeItem('userAcc')
+    localStorage.removeItem('userName')
+    this.route.navigateByUrl("")
   }
 
 
